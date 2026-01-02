@@ -4,7 +4,7 @@ DIRECTORY="$HOME/storage/shared/YT"
 
 cd $DIRECTORY
 
-NOW=$(date +%Y-%m-%d)
+NOW=$(date +%Y-%m-%d %H-%M-%S)
 
 echo 'Opcion:'
 echo '0.- Audio'
@@ -19,36 +19,35 @@ read option
 echo
 echo $option
 
+function create_folder()
+{
+	clear
+	echo 'URL?'
+	read url
+	mkdir $NOW
+	cd $NOW
+}
+
 case $option in
 
 	0)
-		clear
-		echo 'URL?'
-		read url
-		if [[ !-d $NOW ]]; then
-			mkdir $NOW
-		fi
-		cd $NOW
+		create_folder
 		yt-dlp -x --audio-format flac --audio-quality 0 --embed-thumbnail --embed-metadata $url
 	;;
 
 	1)
-		clear
-		echo 'URL?'
-		read url
-		if [[ !-d $NOW ]]; then
-			mkdir $NOW
-		fi
-		cd $NOW
-		yt-dlp -x --merge-output-format mp4 $url
+		create_folder
+		yt-dlp -t mp4 $url
 	;;
 
 	2)
-		#yt-dlp --yes-playlist -x --extract-audio --audio-format flac --audio-quality 0 --embed-thumbnail --embed-metadata $url
+		create_folder
+		yt-dlp --yes-playlist -x --audio-format flac --audio-quality 0 --embed-thumbnail --embed-metadata $url
 	;;
 
 	3)
-		#yt-dlp --yes-playlist -x --merge-output-format mp4 $url
+		create_folder
+		yt-dlp --yes-playlist -t mp4 $url
 	;;
 
 	5)
