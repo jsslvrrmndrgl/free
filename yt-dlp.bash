@@ -1,17 +1,19 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
+termux-wake-lock
+
 DIRECTORY="$HOME/storage/shared/YT"
 
 cd $DIRECTORY
 
-NOW=$(date +%Y-%m-%d %H-%M-%S)
+NOW=$(date +%H-%M-%S)
 
-echo 'Opcion:'
-echo '0.- Audio'
-echo '1.- Video'
-echo '2.- Playlist aac'
+echo 'Option:'
+echo '1.- Audio flac'
+echo '2.- Video mp4'
+echo '3.- Playlist flac'
 echo '4.- Playlist mp4'
-echo '5.- Quit'
+echo '0.- Quit'
 
 echo
 read option
@@ -58,5 +60,7 @@ case $option in
 	;;
 	
 esac
+
+termux-wake-unlock
 
 sleep 3
