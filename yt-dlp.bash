@@ -32,29 +32,30 @@ function create_folder()
 
 case $option in
 
-	0)
+	1)
 		create_folder
 		yt-dlp -x --audio-format flac --audio-quality 0 --embed-thumbnail --embed-metadata $url
 	;;
 
-	1)
+	2)
 		create_folder
 		yt-dlp -t mp4 $url
 	;;
 
-	2)
+	3)
 		create_folder
 		yt-dlp --yes-playlist -x --audio-format flac --audio-quality 0 --embed-thumbnail --embed-metadata $url
 	;;
 
-	3)
+	4)
 		create_folder
 		yt-dlp --yes-playlist -t mp4 $url
 	;;
 
-	5)
+	0)
 		exit
 	;;
+
 	*)
 		echo 'Unknown option!'
 	;;
