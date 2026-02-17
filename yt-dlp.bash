@@ -33,12 +33,12 @@ function create_folder()
 case $option in
 
 	1)
-		create_folder
-		yt-dlp -x --audio-format flac --audio-quality 0 --embed-thumbnail --embed-metadata $url
+		cd $DIRECTORY
+		yt-dlp -x --audio-format flac --audio-quality 0 $url
 	;;
 
 	2)
-		create_folder
+		cd $DIRECTORY
 		yt-dlp -t mp4 $url
 	;;
 
@@ -53,6 +53,7 @@ case $option in
 	;;
 
 	0)
+		termux-wake-unlock
 		exit
 	;;
 
