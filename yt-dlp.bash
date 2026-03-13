@@ -34,7 +34,7 @@ case $option in
 
 	1)
 		cd $DIRECTORY
-		yt-dlp -x --audio-format flac --audio-quality 0 $url
+		yt-dlp -x --audio-format flac --audio-quality 0 --embed-thumbnail --embed-metadata $url
 	;;
 
 	2)
