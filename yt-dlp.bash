@@ -18,27 +18,32 @@ echo '0.- Quit'
 echo
 read option
 
-echo
-echo $option
-
 function create_folder()
 {
 	clear
-	echo 'URL?'
+	echo -n 'URL? '
 	read url
 	mkdir $NOW
 	cd $NOW
 }
 
+function start()
+{
+	clear
+	cd $DIRECTORY
+	echo -n 'URL? '
+	read url
+}
+
 case $option in
 
 	1)
-		cd $DIRECTORY
+		start
 		yt-dlp -x --audio-format flac --audio-quality 0 --embed-thumbnail --embed-metadata $url
 	;;
 
 	2)
-		cd $DIRECTORY
+		start
 		yt-dlp -t mp4 $url
 	;;
 
